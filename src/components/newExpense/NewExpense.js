@@ -1,6 +1,6 @@
 import React from 'react';
 import ExpenseForm from './ExpenseForm';
-import './NexExpense.css';
+import './NewExpense.css';
 
 function NewExpense() {
 return (
