@@ -15,19 +15,35 @@ function ExpenseForm() {
   });
 
   const titleChangeHandler = (event) => {
-    // setEnteredTitle(event.target.value); --> new way for state below
-    setUserInput({
-      ...userInput,
-      enteredTitle: event.target.value
-    })
+    // setEnteredTitle(event.target.value);
+    // --> new way for state below:
+
+    // setUserInput({
+    //   ...userInput,
+    //   enteredTitle: event.target.value
+    // })
+
+    // --> code above would work but not as efficiently.
+    // Code below would be best practice (keeps the latest input):
+
+    setUserInput((prevState) => {
+      return { ...prevState, enteredTitle: event.target.value };
+    });
+
   };
 
   const amountChangeHandler = (event) => {
-    // setEnteredAmount(event.target.value); -->new way for state below
-    setUserInput({
-      ...userInput,
-      enteredAmount: event.target.value
-    })
+    // setEnteredAmount(event.target.value);
+    // -->new way for state below
+
+    // setUserInput({
+    //   ...userInput,
+    //   enteredAmount: event.target.value
+    // })
+    // --> code above would work but not as efficiently.
+    // Code below would be best practice
+
+    // setUserInput
   };
   const dateChangeHandler = (event) => {
     // setEnteredDate(event.target.value); -->new way for state below
