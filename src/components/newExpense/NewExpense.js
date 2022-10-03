@@ -14,7 +14,7 @@ function NewExpense(props) {
 
 return (
     <div className='new-expense'>
-      <ExpenseForm onSaveExpensedata={saveExpenseDataHandler} />
+      <ExpenseForm onSaveExpenseData={saveExpenseDataHandler} />
     </div>
   )
 };
