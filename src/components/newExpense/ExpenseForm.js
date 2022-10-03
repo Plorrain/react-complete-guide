@@ -2,20 +2,20 @@ import React, { useState } from 'react';
 import './ExpenseForm.css';
 
 function ExpenseForm() {
-  // const [enteredTitle, setEnteredTitle] = useState('');
-  // const [enteredAmount, setEnteredAmount] = useState('');
-  // const [enteredDate, setEnteredDate] = useState('');
+  const [enteredTitle, setEnteredTitle] = useState('');
+  const [enteredAmount, setEnteredAmount] = useState('');
+  const [enteredDate, setEnteredDate] = useState('');
 
   // Another way of writing states below
 
-  const [userInput, setUserInput] = useState({
-    enteredTitle: '',
-    enteredAmount: '',
-    enteredDate: ''
-  });
+  // const [userInput, setUserInput] = useState({
+  //   enteredTitle: '',
+  //   enteredAmount: '',
+  //   enteredDate: ''
+  // });
 
   const titleChangeHandler = (event) => {
-    // setEnteredTitle(event.target.value);
+    setEnteredTitle(event.target.value);
     // --> new way for state below:
 
     // setUserInput({
@@ -26,14 +26,14 @@ function ExpenseForm() {
     // --> code above would work but not as efficiently.
     // Code below would be best practice (keeps the latest input):
 
-    setUserInput((prevState) => {
-      return { ...prevState, enteredTitle: event.target.value };
-    });
+    // setUserInput((prevState) => {
+    //   return { ...prevState, enteredTitle: event.target.value };
+    // });
 
   };
 
   const amountChangeHandler = (event) => {
-    // setEnteredAmount(event.target.value);
+    setEnteredAmount(event.target.value);
     // -->new way for state below
 
     // setUserInput({
@@ -43,18 +43,32 @@ function ExpenseForm() {
     // --> code above would work but not as efficiently.
     // Code below would be best practice
 
-    // setUserInput
+    // setUserInput etc.
   };
   const dateChangeHandler = (event) => {
-    // setEnteredDate(event.target.value); -->new way for state below
-    setUserInput({
-      ...userInput,
-      enteredDate: event.target.value
-    })
+    setEnteredDate(event.target.value);
+    // -->new way for state below
+    // setUserInput({
+    //   ...userInput,
+    //   enteredDate: event.target.value
+    // })
+  };
+
+  const submitHandler = (event) => {
+    // prevents browser to reload the page everytime
+    event.preventDefault();
+
+    const expenseData = {
+      title: enteredTitle,
+      amount: enteredAmount,
+      date: new Date(enteredDate)
+    };
+
+    console.log(expenseData);
   };
 
   return (
-      <form>
+      <form onSubmit={submitHandler}>
         <div className='new-expense__controls'>
           <div className='new-expense__control'>
             <label>Title</label>
