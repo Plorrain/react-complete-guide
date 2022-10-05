@@ -6,15 +6,17 @@ import Card from '../UI/Card';
 import './Expenses.css';
 
 function Expenses(props) {
-  const [pickedyear, setPickedYear] = useState('');
-  const filterChangeHandler = (pickedYear) => {
-    console.log('Expenses.js');
-    console.log(pickedYear);
+  const [pickedyear, setPickedYear] = useState('2020');
+
+  const filterChangeHandler = (filteredYear) => {
+    setPickedYear(filteredYear);
   };
   return (
     <div>
       <Card className='expenses'>
-        <ExpensesFilter onChangeFilter={filterChangeHandler} />
+        <ExpensesFilter selected={pickedyear}
+        onChangeFilter={filterChangeHandler}
+        />
           <ExpenseItem
             title={props.items[0].title}
             amount={props.items[0].amount}
