@@ -24,6 +24,7 @@ const INITIAL_EXPENSES = [
     date: new Date(2021, 5, 12),
   },
 ];
+
 function App() {
   const [ expenses, setExpenses ] = useState(INITIAL_EXPENSES);
 
