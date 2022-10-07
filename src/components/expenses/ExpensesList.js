@@ -3,24 +3,22 @@ import ExpenseItem from './ExpenseItem';
 import './ExpensesList.css';
 
 function ExpensesList(props) {
-  let expensesContent = <p>No entries for that year.</p>;
+  if (props.items.length === 0) {
+   return <h2 className='expenses-list__fallback'>Nothing Found.</h2>;
+  }
 
-  if (props.items.length > 0) {
-    expensesContent = props.items.map((expense) => (
+  return (
+  <ul className='expenses-list'>
+    {props.items.map((expense) => (
       <ExpenseItem
       key={expense.id}
       title={expense.title}
       amount={expense.amount}
       date={expense.date}
       />
-    ));
-  }
-
-  return (
-    <ul className='expenses-list'>
-
-    </ul>
-  )
+    ))}
+  </ul>
+  );
 };
 
 export default ExpensesList;
