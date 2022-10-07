@@ -5,8 +5,8 @@ import './ExpensesList.css';
 function ExpensesList(props) {
   let expensesContent = <p>No entries for that year.</p>;
 
-  if (filteredExpenses.length > 0) {
-    expensesContent = filteredExpenses.map((expense) => (
+  if (props.items.length > 0) {
+    expensesContent = props.items.map((expense) => (
       <ExpenseItem
       key={expense.id}
       title={expense.title}
@@ -16,6 +16,11 @@ function ExpensesList(props) {
     ));
   }
 
+  return (
+    <ul className='expenses-list'>
+
+    </ul>
+  )
 };
 
 export default ExpensesList;
