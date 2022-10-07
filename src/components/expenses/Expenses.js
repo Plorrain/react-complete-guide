@@ -22,14 +22,15 @@ function Expenses(props) {
         <ExpensesFilter selected={pickedYear}
         onChangeFilter={filterChangeHandler}
         />
-        {props.items.map((expense) => (
+        {filteredExpenses.length === 0 ?
+        (<p>No entries for that year.</p>) : (filteredExpenses.map((expense) => (
           <ExpenseItem
           key={expense.id}
           title={expense.title}
           amount={expense.amount}
           date={expense.date}
-          />
-        ))}
+          />))
+          )}
       </Card>
     </div>
   );
